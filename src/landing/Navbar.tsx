@@ -111,14 +111,8 @@ export default function Navbar() {
             </svg>
           </button>
 
-          {/* CTA desktop */}
+          {/* CTA desktop — bouton Admin supprimé */}
           <div className="hidden items-center gap-3 lg:flex">
-            <Link
-              to="/login/admin"
-              className="px-4 py-2.5 border border-orange-500 text-orange-500 hover:bg-orange-50 text-xs font-bold tracking-widest uppercase rounded-sm transition-all"
-            >
-              Admin
-            </Link>
             {isClientLoggedIn ? (
               <>
                 <Link
@@ -181,6 +175,7 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Barre de recherche */}
       {searchOpen && (
         <div className="border-t border-orange-100 bg-white px-6 md:px-[5vw] py-4">
           <div className="relative mb-4">
@@ -333,6 +328,7 @@ export default function Navbar() {
         </div>
       )}
 
+      {/* Menu mobile — bouton Admin supprimé */}
       {menuOpen && (
         <div className="flex flex-col gap-4 border-t border-orange-100 bg-white px-4 pb-5 pt-4 sm:px-6 lg:hidden">
           {links.map((l) => (

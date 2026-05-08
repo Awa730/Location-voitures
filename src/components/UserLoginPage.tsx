@@ -4,6 +4,10 @@ import AuthLayout from "./AuthLayout";
 import ForgotPassword from "./ForgotPassword";
 import SignUp from "./SignUp";
 
+// Identifiants admin (centralisés ici, pas de page admin séparée)
+const ADMIN_EMAIL = "movia@automobile.com";
+const ADMIN_PASSWORD = "Admins2026";
+
 interface UserLoginPageProps {
   initialView?: "login" | "signup" | "forgot";
 }
@@ -14,7 +18,9 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
   const authCopy = {
     login: {
       title: "Accès Client",
@@ -30,14 +36,27 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
     },
   }[view];
 
-  // Redirection vers l'espace client personnel
-  const handleUserLogin = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     setTimeout(() => {
-      const storedProfile = JSON.parse(localStorage.getItem("clientProfile") || "{}");
+      // ── Vérification admin en priorité ──
+      if (email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
+        if (password === ADMIN_PASSWORD) {
+          localStorage.setItem("adminAuthenticated", "true");
+          localStorage.setItem("adminEmail", email);
+          navigate("/admin/dashboard");
+        } else {
+          setError("Mot de passe administrateur incorrect.");
+        }
+        setLoading(false);
+        return;
+      }
 
+      // ── Connexion client normal ──
+      const storedProfile = JSON.parse(localStorage.getItem("clientProfile") || "{}");
       localStorage.setItem("utilisateur", "true");
       localStorage.setItem("userEmail", email);
       localStorage.setItem(
@@ -53,16 +72,26 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
     }, 1500);
   };
 
+  // Redirection déconnexion vers /login/client (cohérent avec App.tsx)
+
   return (
-    <AuthLayout 
+    <AuthLayout
       title={authCopy.title}
       subtitle={authCopy.subtitle}
       isReserved={true}
     >
       {view === "login" ? (
-        <form onSubmit={handleUserLogin} className="flex flex-col gap-3.5">
+        <form onSubmit={handleLogin} className="flex flex-col gap-3.5">
+          {error && (
+            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm font-medium">
+              {error}
+            </div>
+          )}
+
           <div className="flex flex-col gap-2">
-            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">Email Client</label>
+            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
+              Email
+            </label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">✉️</span>
               <input
@@ -77,7 +106,9 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">Mot de passe</label>
+            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
+              Mot de passe
+            </label>
             <div className="relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">🔒</span>
               <input
@@ -113,7 +144,7 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
             disabled={loading}
             className="w-full h-[50px] bg-[#0F172A] text-white font-black rounded-[15px] shadow-xl flex items-center justify-center gap-3 uppercase tracking-[0.18em]"
           >
-            {loading ? <span className="inline-block animate-spin">⏳</span> : "Accéder à l'espace client"}
+            {loading ? <span className="inline-block animate-spin">⏳</span> : "Se connecter"}
           </button>
 
           <div className="text-center">
