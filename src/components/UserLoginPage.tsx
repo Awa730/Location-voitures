@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { GoogleLogin } from "@react-oauth/google";
 import AuthLayout from "./AuthLayout";
 import ForgotPassword from "./ForgotPassword";
 import SignUp from "./SignUp";
-
-// Identifiants admin (centralisés ici, pas de page admin séparée)
-const ADMIN_EMAIL = "movia@automobile.com";
-const ADMIN_PASSWORD = "Admins2026";
+import { login, googleAuth } from "../services/api";
 
 interface UserLoginPageProps {
   initialView?: "login" | "signup" | "forgot";
@@ -20,6 +18,45 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Google OAuth success handler → appel API
+  const handleGoogleSuccess = async (credentialResponse: { credential?: string }) => {
+    setLoading(true);
+    setError("");
+    if (!credentialResponse.credential) return;
+
+    try {
+      const data = await googleAuth(credentialResponse.credential);
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("userRole", data.user.role);
+      localStorage.setItem("userName", data.user.nom);
+      localStorage.setItem("userEmail", data.user.email);
+
+      // Compatibilité avec l'ancien code du frontend
+      if (data.user.role === "admin") {
+        localStorage.setItem("adminAuthenticated", "true");
+        localStorage.setItem("adminEmail", data.user.email);
+        navigate("/admin/dashboard");
+      } else {
+        localStorage.setItem("utilisateur", "true");
+        localStorage.setItem("clientProfile", JSON.stringify({
+          nom: data.user.nom,
+          email: data.user.email,
+          telephone: data.user.telephone || "",
+        }));
+        navigate("/client/dashboard");
+      }
+    } catch {
+      setError("Erreur lors de la connexion Google");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError("Échec de la connexion Google");
+    setLoading(false);
+  };
 
   const authCopy = {
     login: {
@@ -36,43 +73,39 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
     },
   }[view];
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Handle email/password login → appel API
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    setTimeout(() => {
-      // ── Vérification admin en priorité ──
-      if (email.trim().toLowerCase() === ADMIN_EMAIL.toLowerCase()) {
-        if (password === ADMIN_PASSWORD) {
-          localStorage.setItem("adminAuthenticated", "true");
-          localStorage.setItem("adminEmail", email);
-          navigate("/admin/dashboard");
-        } else {
-          setError("Mot de passe administrateur incorrect.");
-        }
-        setLoading(false);
-        return;
+    try {
+      const data = await login(email, password);
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("userRole", data.user.role);
+      localStorage.setItem("userName", data.user.nom);
+      localStorage.setItem("userEmail", data.user.email);
+
+      // Compatibilité avec l'ancien code du frontend
+      if (data.user.role === "admin") {
+        localStorage.setItem("adminAuthenticated", "true");
+        localStorage.setItem("adminEmail", data.user.email);
+        navigate("/admin/dashboard");
+      } else {
+        localStorage.setItem("utilisateur", "true");
+        localStorage.setItem("clientProfile", JSON.stringify({
+          nom: data.user.nom,
+          email: data.user.email,
+          telephone: data.user.telephone || "",
+        }));
+        navigate("/client/dashboard");
       }
-
-      // ── Connexion client normal ──
-      const storedProfile = JSON.parse(localStorage.getItem("clientProfile") || "{}");
-      localStorage.setItem("utilisateur", "true");
-      localStorage.setItem("userEmail", email);
-      localStorage.setItem(
-        "clientProfile",
-        JSON.stringify({
-          nom: storedProfile.nom || "",
-          email,
-          telephone: storedProfile.telephone || "",
-        })
-      );
+    } catch (err) {
+      setError("Email ou mot de passe incorrect");
+    } finally {
       setLoading(false);
-      navigate("/client/dashboard");
-    }, 1500);
+    }
   };
-
-  // Redirection déconnexion vers /login/client (cohérent avec App.tsx)
 
   return (
     <AuthLayout
@@ -81,94 +114,123 @@ const UserLoginPage: React.FC<UserLoginPageProps> = ({ initialView = "login" }) 
       isReserved={true}
     >
       {view === "login" ? (
-        <form onSubmit={handleLogin} className="flex flex-col gap-3.5">
-          {error && (
-            <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm font-medium">
-              {error}
+        <div className="flex flex-col items-center">
+          <div className="flex flex-col w-full space-y-4">
+            <form onSubmit={handleLogin} className="w-full space-y-3">
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm font-medium">
+                  {error}
+                </div>
+              )}
+
+              {/* Email Field */}
+              <div className="flex flex-col">
+                <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
+                  Email
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">✉️</span>
+                  <input
+                    type="email"
+                    placeholder="votre@email.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full h-[50px] pl-11 bg-[#F8FAFC] border-2 border-transparent rounded-[14px] focus:border-[#F97316]/20 outline-none transition-all font-semibold"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Password Field */}
+              <div className="flex flex-col">
+                <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
+                  Mot de passe
+                </label>
+                <div className="relative">
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">🔒</span>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full h-[50px] pl-11 pr-11 bg-[#F8FAFC] border-2 border-transparent rounded-[14px] focus:border-[#F97316]/20 outline-none transition-all font-semibold"
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 text-lg"
+                  >
+                    {showPassword ? "👁️" : "👁️‍🗨️"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Submit Buttons */}
+              <div className="flex flex-col space-y-3">
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full h-[50px] bg-[#0F172A] text-white font-black rounded-[15px] shadow-xl flex items-center justify-center gap-3 uppercase tracking-[0.18em]"
+                >
+                  {loading ? (
+                    <span className="inline-block animate-spin">⏳</span>
+                  ) : (
+                    "Se connecter"
+                  )}
+                </button>
+
+                <div className="w-full">
+                  <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={handleGoogleError}
+                    theme="outline"
+                    shape="rectangular"
+                    size="large"
+                    text="signin_with"
+                    containerProps={{
+                      className: "w-full !justify-center",
+                      style: { width: "100%" },
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Forgot Password */}
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => setView("forgot")}
+                  className="text-sm font-black text-[#F97316] uppercase tracking-tighter"
+                >
+                  Oublié ?
+                </button>
+              </div>
+            </form>
+
+            <div className="text-center mt-4">
+              <p className="text-[#94A3B8] text-sm font-medium mb-3">
+                Nouveau ?{" "}
+                <button
+                  type="button"
+                  onClick={() => setView("signup")}
+                  className="text-[#F97316] font-black uppercase hover:underline"
+                >
+                  S'inscrire
+                </button>
+              </p>
+              <p className="text-[#94A3B8] text-sm font-medium">
+                <button
+                  type="button"
+                  onClick={() => navigate("/")}
+                  className="text-[#F97316] font-black uppercase hover:underline"
+                >
+                  Retour à l'accueil
+                </button>
+              </p>
             </div>
-          )}
-
-          <div className="flex flex-col gap-2">
-            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
-              Email
-            </label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">✉️</span>
-              <input
-                type="email"
-                placeholder="votre@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-[50px] pl-11 bg-[#F8FAFC] border-2 border-transparent rounded-[14px] focus:border-[#F97316]/20 outline-none transition-all font-semibold"
-                required
-              />
-            </div>
           </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-[12px] font-black text-[#94A3B8] uppercase tracking-widest ml-1">
-              Mot de passe
-            </label>
-            <div className="relative">
-              <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300">🔒</span>
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full h-[50px] pl-11 pr-11 bg-[#F8FAFC] border-2 border-transparent rounded-[14px] focus:border-[#F97316]/20 outline-none transition-all font-semibold"
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 text-lg"
-              >
-                {showPassword ? "👁️" : "👁️‍🗨️"}
-              </button>
-            </div>
-          </div>
-
-          <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={() => setView("forgot")}
-              className="text-sm font-black text-[#F97316] uppercase tracking-tighter"
-            >
-              Oublié ?
-            </button>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full h-[50px] bg-[#0F172A] text-white font-black rounded-[15px] shadow-xl flex items-center justify-center gap-3 uppercase tracking-[0.18em]"
-          >
-            {loading ? <span className="inline-block animate-spin">⏳</span> : "Se connecter"}
-          </button>
-
-          <div className="text-center">
-            <p className="text-[#94A3B8] text-sm font-medium mb-3">
-              Nouveau ?{" "}
-              <button
-                type="button"
-                onClick={() => setView("signup")}
-                className="text-[#F97316] font-black uppercase hover:underline"
-              >
-                S'inscrire
-              </button>
-            </p>
-            <p className="text-[#94A3B8] text-sm font-medium">
-              <button
-                type="button"
-                onClick={() => navigate("/")}
-                className="text-[#F97316] font-black uppercase hover:underline"
-              >
-                Retour à l'accueil
-              </button>
-            </p>
-          </div>
-        </form>
+        </div>
       ) : view === "signup" ? (
         <SignUp
           onSignUp={() => navigate("/client/dashboard")}
