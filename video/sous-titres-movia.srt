@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:12,000
+Bienvenue sur Movia, la plateforme automobile qui simplifie la location et la vente de vehicules premium au Senegal.
+
+2
+00:00:12,000 --> 00:00:25,000
+Des la page d'accueil, l'utilisateur decouvre une interface moderne, claire et elegante.
+
+3
+00:00:25,000 --> 00:00:42,000
+Movia met en avant plusieurs categories de voitures : citadines, berlines, SUV, vehicules de luxe et modeles haut de gamme.
+
+4
+00:00:42,000 --> 00:00:58,000
+La plateforme presente aussi ses offres, son fonctionnement et les avis clients.
+
+5
+00:00:58,000 --> 00:01:12,000
+Le client peut se connecter avec son adresse email et son mot de passe.
+
+6
+00:01:12,000 --> 00:01:25,000
+Il peut aussi s'inscrire en quelques etapes, ou recuperer son mot de passe en cas d'oubli.
+
+7
+00:01:25,000 --> 00:01:45,000
+Dans son espace client, il retrouve son tableau de bord, ses informations, ses reservations et ses paiements.
+
+8
+00:01:45,000 --> 00:01:58,000
+Depuis son profil, le client peut consulter et modifier ses informations personnelles.
+
+9
+00:01:58,000 --> 00:02:12,000
+La gestion des reservations permet de suivre chaque demande et de proceder au paiement si necessaire.
+
+10
+00:02:12,000 --> 00:02:28,000
+L'espace administrateur permet de superviser l'activite, les clients, les reservations et les paiements.
+
+11
+00:02:28,000 --> 00:02:40,000
+Movia, votre partenaire automobile pour avancer en toute confiance.

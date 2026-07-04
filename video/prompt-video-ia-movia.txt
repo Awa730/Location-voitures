@@ -1,0 +1,38 @@
+Cree une video professionnelle de presentation pour la plateforme Movia, une plateforme de location et de vente de vehicules premium au Senegal.
+
+Utilise un style moderne, premium, clair et rassurant. La video doit durer environ 2 minutes 30. Utilise les couleurs de marque noir, blanc et orange. Ajoute des transitions fluides, des zooms lents sur les vehicules, des captures de l'interface, des textes courts a l'ecran et une musique corporate elegante en fond.
+
+Structure de la video :
+1. Introduction avec le logo Movia et une image de voiture premium.
+2. Presentation de la page d'accueil.
+3. Presentation des categories de vehicules.
+4. Presentation des offres, du fonctionnement et des temoignages.
+5. Presentation de la connexion client.
+6. Presentation de l'inscription et de la recuperation du mot de passe.
+7. Presentation de l'espace client et du tableau de bord.
+8. Presentation du profil client.
+9. Presentation des reservations, statuts et paiements.
+10. Presentation de l'espace administrateur.
+11. Conclusion avec le logo Movia et la phrase : "Movia, votre partenaire automobile pour avancer en toute confiance."
+
+Voix off a utiliser :
+
+Bienvenue sur Movia, la plateforme automobile qui simplifie la location et la vente de vehicules premium au Senegal.
+
+Des la page d'accueil, l'utilisateur decouvre une interface moderne, claire et elegante, pensee pour trouver rapidement le vehicule adapte a son besoin.
+
+Movia met en avant plusieurs categories de voitures : citadines, berlines, SUV, vehicules de luxe et modeles haut de gamme. Chaque section aide le client a comparer, choisir et avancer en toute confiance.
+
+La plateforme presente aussi ses offres, son fonctionnement et les avis clients, afin de rendre l'experience plus transparente, plus rassurante et plus facile a comprendre.
+
+Pour acceder a son espace personnel, le client peut se connecter avec son adresse email et son mot de passe. S'il n'a pas encore de compte, il peut s'inscrire en quelques etapes, ou recuperer son mot de passe en cas d'oubli.
+
+Une fois connecte, l'utilisateur arrive dans son espace client. Il retrouve son tableau de bord, ses informations personnelles, ses reservations, leurs statuts et les paiements a effectuer.
+
+Depuis son profil, le client peut consulter et modifier ses informations comme son nom, son email ou son numero de telephone. Tout est centralise pour lui offrir plus d'autonomie.
+
+La gestion des reservations permet de suivre chaque demande, de voir si elle est en attente, confirmee ou terminee, et de proceder au paiement lorsque cela est necessaire.
+
+Movia dispose egalement d'un espace administrateur. Cet espace permet de superviser l'activite, suivre les clients, gerer les reservations, controler les paiements et organiser le service plus efficacement.
+
+Avec Movia, la location et la vente de vehicules deviennent plus simples, plus rapides et plus securisees. Movia, votre partenaire automobile pour avancer en toute confiance.

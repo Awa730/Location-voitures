@@ -1,0 +1,84 @@
+[Script Info]
+Title: Movia captions
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Caption,Arial,38,&H00FFFFFF,&H000000FF,&H00111111,&HCC000000,-1,0,0,0,100,100,0,0,3,2,0,2,130,130,72,1
+Style: Chapter,Arial,44,&H000079F9,&H000000FF,&H00FFFFFF,&H99000000,-1,0,0,0,100,100,0,0,3,2,0,7,70,70,58,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:10.48,Chapter,,0,0,0,,Introduction
+Dialogue: 0,0:00:00.00,0:00:07.99,Caption,,0,0,0,,Bienvenue sur Movia, une plateforme moderne pensée pour simplifier la location et la vente de
+Dialogue: 0,0:00:07.99,0:00:10.48,Caption,,0,0,0,,véhicules premium au Sénégal.
+Dialogue: 0,0:00:10.48,0:00:30.17,Chapter,,0,0,0,,Page d’accueil
+Dialogue: 0,0:00:10.48,0:00:15.15,Caption,,0,0,0,,Dès la page d’accueil, l’utilisateur découvre une interface claire, élégante et facile à
+Dialogue: 0,0:00:15.15,0:00:16.95,Caption,,0,0,0,,parcourir.
+Dialogue: 0,0:00:16.95,0:00:21.09,Caption,,0,0,0,,Le menu permet d’accéder rapidement aux principales sections de la plateforme.
+Dialogue: 0,0:00:21.09,0:00:25.87,Caption,,0,0,0,,La page met en avant l’univers Movia, les véhicules disponibles, les offres tarifaires, le
+Dialogue: 0,0:00:25.87,0:00:30.17,Caption,,0,0,0,,fonctionnement du service, les témoignages clients ainsi que les informations essentielles en
+Dialogue: 0,0:00:30.17,0:00:30.17,Caption,,0,0,0,,bas de page.
+Dialogue: 0,0:00:30.17,0:00:45.97,Chapter,,0,0,0,,Solution automobile
+Dialogue: 0,0:00:30.17,0:00:35.75,Caption,,0,0,0,,La section principale présente Movia comme une solution fiable pour trouver un véhicule adapté
+Dialogue: 0,0:00:35.75,0:00:37.55,Caption,,0,0,0,,à chaque besoin.
+Dialogue: 0,0:00:37.55,0:00:42.84,Caption,,0,0,0,,Que ce soit pour un déplacement professionnel, un voyage, un événement ou une utilisation
+Dialogue: 0,0:00:42.84,0:00:45.97,Caption,,0,0,0,,personnelle, la plateforme accompagne l’utilisateur dans son choix.
+Dialogue: 0,0:00:45.97,0:01:02.17,Chapter,,0,0,0,,Véhicules
+Dialogue: 0,0:00:45.97,0:00:50.94,Caption,,0,0,0,,La partie véhicules permet de découvrir différentes catégories de voitures, comme les
+Dialogue: 0,0:00:50.94,0:00:56.32,Caption,,0,0,0,,citadines, les berlines, les SUV, les véhicules de luxe ou encore les modèles haut de gamme.
+Dialogue: 0,0:00:56.32,0:01:01.59,Caption,,0,0,0,,L’objectif est de proposer une expérience automobile complète, accessible depuis une seule
+Dialogue: 0,0:01:01.59,0:01:02.17,Caption,,0,0,0,,interface.
+Dialogue: 0,0:01:02.17,0:01:15.38,Chapter,,0,0,0,,Offres
+Dialogue: 0,0:01:02.17,0:01:06.48,Caption,,0,0,0,,La section offres présente les différentes formules disponibles.
+Dialogue: 0,0:01:06.48,0:01:12.75,Caption,,0,0,0,,L’utilisateur peut comparer les services, consulter les avantages proposés et choisir l’offre
+Dialogue: 0,0:01:12.75,0:01:15.38,Caption,,0,0,0,,qui correspond le mieux à ses attentes.
+Dialogue: 0,0:01:15.38,0:01:30.34,Chapter,,0,0,0,,Fonctionnement
+Dialogue: 0,0:01:15.38,0:01:21.02,Caption,,0,0,0,,La plateforme explique également son fonctionnement de manière simple : choisir un véhicule,
+Dialogue: 0,0:01:21.02,0:01:26.29,Caption,,0,0,0,,définir ses dates, confirmer sa réservation et prendre la route en toute tranquillité.
+Dialogue: 0,0:01:26.29,0:01:30.34,Caption,,0,0,0,,Cette approche rend le service rapide, clair et accessible à tous.
+Dialogue: 0,0:01:30.34,0:01:44.53,Chapter,,0,0,0,,Témoignages
+Dialogue: 0,0:01:30.34,0:01:35.96,Caption,,0,0,0,,Les témoignages clients renforcent la confiance en montrant les retours d’expérience des
+Dialogue: 0,0:01:35.96,0:01:37.76,Caption,,0,0,0,,utilisateurs.
+Dialogue: 0,0:01:37.76,0:01:43.26,Caption,,0,0,0,,Ils permettent de mettre en avant la qualité du service, la fiabilité des véhicules et
+Dialogue: 0,0:01:43.26,0:01:44.53,Caption,,0,0,0,,l’accompagnement proposé par Movia.
+Dialogue: 0,0:01:44.53,0:01:54.61,Chapter,,0,0,0,,Connexion
+Dialogue: 0,0:01:44.53,0:01:53.07,Caption,,0,0,0,,Pour accéder à son espace personnel, l’utilisateur peut se connecter avec son adresse email et
+Dialogue: 0,0:01:53.07,0:01:54.61,Caption,,0,0,0,,son mot de passe.
+Dialogue: 0,0:01:54.61,0:02:06.73,Chapter,,0,0,0,,Inscription
+Dialogue: 0,0:01:54.61,0:01:59.06,Caption,,0,0,0,,S’il n’a pas encore de compte, il peut s’inscrire facilement.
+Dialogue: 0,0:01:59.06,0:02:05.93,Caption,,0,0,0,,Lors de l’inscription, le nouveau client renseigne ses informations personnelles afin de créer
+Dialogue: 0,0:02:05.93,0:02:06.73,Caption,,0,0,0,,son compte.
+Dialogue: 0,0:02:06.73,0:02:15.79,Chapter,,0,0,0,,Récupération
+Dialogue: 0,0:02:06.73,0:02:15.79,Caption,,0,0,0,,En cas d’oubli, une option de récupération du mot de passe est également disponible.
+Dialogue: 0,0:02:15.79,0:02:31.91,Chapter,,0,0,0,,Espace client
+Dialogue: 0,0:02:15.79,0:02:21.12,Caption,,0,0,0,,Une fois connecté, il accède à son espace client, un tableau de bord conçu pour centraliser
+Dialogue: 0,0:02:21.12,0:02:23.23,Caption,,0,0,0,,toutes ses informations importantes.
+Dialogue: 0,0:02:23.23,0:02:28.63,Caption,,0,0,0,,Dans l’espace client, l’utilisateur retrouve ses données personnelles, ses réservations, les
+Dialogue: 0,0:02:28.63,0:02:31.91,Caption,,0,0,0,,statuts associés et les paiements éventuels à effectuer.
+Dialogue: 0,0:02:31.91,0:02:51.46,Chapter,,0,0,0,,Réservations
+Dialogue: 0,0:02:31.91,0:02:36.74,Caption,,0,0,0,,Il peut suivre l’évolution de ses demandes, voir les réservations en attente, confirmées ou
+Dialogue: 0,0:02:36.74,0:02:39.83,Caption,,0,0,0,,terminées, et agir rapidement lorsque cela est nécessaire.
+Dialogue: 0,0:02:39.83,0:02:42.85,Caption,,0,0,0,,La gestion des réservations est au cœur de la plateforme.
+Dialogue: 0,0:02:42.85,0:02:47.64,Caption,,0,0,0,,Chaque client peut suivre ses réservations, vérifier leur état, consulter les informations
+Dialogue: 0,0:02:47.64,0:02:51.46,Caption,,0,0,0,,associées et procéder au paiement lorsqu’une réservation est en attente.
+Dialogue: 0,0:02:51.46,0:03:05.51,Chapter,,0,0,0,,Profil client
+Dialogue: 0,0:02:51.46,0:02:57.55,Caption,,0,0,0,,La partie profil permet au client de consulter et modifier ses informations, comme son nom, son
+Dialogue: 0,0:02:57.55,0:02:59.67,Caption,,0,0,0,,email ou son numéro de téléphone.
+Dialogue: 0,0:02:59.67,0:03:05.51,Caption,,0,0,0,,Cette fonctionnalité lui donne plus d’autonomie et lui permet de garder ses données à jour.
+Dialogue: 0,0:03:05.51,0:03:22.22,Chapter,,0,0,0,,Administration
+Dialogue: 0,0:03:05.51,0:03:08.45,Caption,,0,0,0,,Movia dispose également d’un espace administrateur.
+Dialogue: 0,0:03:08.45,0:03:13.46,Caption,,0,0,0,,Cet espace permet de superviser l’activité de la plateforme, de suivre les clients, les
+Dialogue: 0,0:03:13.46,0:03:16.75,Caption,,0,0,0,,réservations, les paiements et l’état général du service.
+Dialogue: 0,0:03:16.75,0:03:21.70,Caption,,0,0,0,,L’administrateur peut ainsi mieux organiser la gestion quotidienne et assurer un suivi
+Dialogue: 0,0:03:21.70,0:03:22.22,Caption,,0,0,0,,efficace.
+Dialogue: 0,0:03:22.22,0:03:45.27,Chapter,,0,0,0,,Conclusion
+Dialogue: 0,0:03:22.22,0:03:29.44,Caption,,0,0,0,,Avec Movia, la location et la vente de véhicules deviennent plus simples, plus rapides et plus
+Dialogue: 0,0:03:29.44,0:03:31.24,Caption,,0,0,0,,fiables.
+Dialogue: 0,0:03:31.24,0:03:38.54,Caption,,0,0,0,,La plateforme réunit dans un seul espace les outils nécessaires pour découvrir, réserver, gérer
+Dialogue: 0,0:03:38.54,0:03:41.31,Caption,,0,0,0,,et suivre son expérience automobile.
+Dialogue: 0,0:03:41.31,0:03:45.27,Caption,,0,0,0,,Movia, votre partenaire automobile pour avancer en toute confiance.

@@ -1,0 +1,29 @@
+Bienvenue sur Movia, une plateforme moderne pensée pour simplifier la location et la vente de véhicules premium au Sénégal.
+
+Dès la page d’accueil, l’utilisateur découvre une interface claire, élégante et facile à parcourir. Le menu permet d’accéder rapidement aux principales sections de la plateforme. La page met en avant l’univers Movia, les véhicules disponibles, les offres tarifaires, le fonctionnement du service, les témoignages clients ainsi que les informations essentielles en bas de page.
+
+La section principale présente Movia comme une solution fiable pour trouver un véhicule adapté à chaque besoin. Que ce soit pour un déplacement professionnel, un voyage, un événement ou une utilisation personnelle, la plateforme accompagne l’utilisateur dans son choix.
+
+La partie véhicules permet de découvrir différentes catégories de voitures, comme les citadines, les berlines, les SUV, les véhicules de luxe ou encore les modèles haut de gamme. L’objectif est de proposer une expérience automobile complète, accessible depuis une seule interface.
+
+La section offres présente les différentes formules disponibles. L’utilisateur peut comparer les services, consulter les avantages proposés et choisir l’offre qui correspond le mieux à ses attentes.
+
+La plateforme explique également son fonctionnement de manière simple : choisir un véhicule, définir ses dates, confirmer sa réservation et prendre la route en toute tranquillité. Cette approche rend le service rapide, clair et accessible à tous.
+
+Les témoignages clients renforcent la confiance en montrant les retours d’expérience des utilisateurs. Ils permettent de mettre en avant la qualité du service, la fiabilité des véhicules et l’accompagnement proposé par Movia.
+
+Pour accéder à son espace personnel, l’utilisateur peut se connecter avec son adresse email et son mot de passe. S’il n’a pas encore de compte, il peut s’inscrire facilement. En cas d’oubli, une option de récupération du mot de passe est également disponible.
+
+Lors de l’inscription, le nouveau client renseigne ses informations personnelles afin de créer son compte. Une fois connecté, il accède à son espace client, un tableau de bord conçu pour centraliser toutes ses informations importantes.
+
+Dans l’espace client, l’utilisateur retrouve ses données personnelles, ses réservations, les statuts associés et les paiements éventuels à effectuer. Il peut suivre l’évolution de ses demandes, voir les réservations en attente, confirmées ou terminées, et agir rapidement lorsque cela est nécessaire.
+
+La partie profil permet au client de consulter et modifier ses informations, comme son nom, son email ou son numéro de téléphone. Cette fonctionnalité lui donne plus d'autonomie et lui permet de garder ses données à jour.
+
+La gestion des réservations est au cœur de la plateforme. Chaque client peut suivre ses réservations, vérifier leur état, consulter les informations associées et procéder au paiement lorsqu’une réservation est en attente. Tout est pensé pour offrir une expérience simple, fluide et sécurisée.
+
+Movia dispose également d’un espace administrateur. Cet espace permet de superviser l’activité de la plateforme, de suivre les clients, les réservations, les paiements et l’état général du service. L’administrateur peut ainsi mieux organiser la gestion quotidienne et assurer un suivi efficace.
+
+Avec Movia, la location et la vente de véhicules deviennent plus simples, plus rapides et plus fiables. La plateforme réunit dans un seul espace les outils nécessaires pour découvrir, réserver, gérer et suivre son expérience automobile.
+
+Movia, votre partenaire automobile pour avancer en toute confiance.
