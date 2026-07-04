@@ -15,17 +15,20 @@ export const login = async (email: string, password: string) => {
     body: JSON.stringify({ email, password }),
   });
   if (!res.ok) throw new Error('Identifiants incorrects');
-  return res.json();
+  const data = await res.json();
+  return { ...data, access_token: data.token };
 };
 
 export const register = async (nom: string, email: string, password: string) => {
   const res = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nom, email, password }),
+    body: JSON.stringify({ nom, email, motDePasse: password }),
   });
   if (!res.ok) throw new Error('Erreur inscription');
-  return res.json();
+  const data = await res.json();
+  // Backend retourne 'token', 
+  return { ...data, access_token: data.token };
 };
 
 export const googleAuth = async (credential: string) => {
@@ -35,7 +38,8 @@ export const googleAuth = async (credential: string) => {
     body: JSON.stringify({ credential }),
   });
   if (!res.ok) throw new Error('Erreur Google Auth');
-  return res.json();
+  const data = await res.json();
+  return { ...data, access_token: data.token };
 };
 
 // ─── VÉHICULES ───────────────────────────────────────
